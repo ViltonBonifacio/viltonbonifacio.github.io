@@ -1,0 +1,172 @@
+/*-----Tags-----*/
+body {
+  background-color: #e5e3e3;
+  font-family: 'Open Sans';
+}
+header {
+  background-color: brown;
+  color: lightgrey;
+}
+hr {
+  margin-top: 5%;
+  margin-botton: 5%;
+}
+h2 {
+  margin-top: 5%;
+}
+h3 {
+  font-size: ;
+}
+
+/*-----Links-----*/
+a:link {
+    color: brown;
+}
+a:visited {
+    color: DarkRed;
+}
+a:hover {
+    color: red;
+}
+a:active {
+    color: brown;
+}
+
+/*-----IDs-----*/
+#headerImg {
+  width: 100%;
+  border-radius: 50%;
+}
+#headerText {
+  vertical-align: middle;
+}
+
+/*-----Main Image and Text-----*/
+.nameEmphasis {
+  color: darkgrey;
+}
+.shadowBox {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*-----Header-----*/
+.containerBox {
+  font-size: 16px;
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*-----content-----*/
+.workImgsCoca {
+  width: 85%;
+  border-radius: 1%;
+  display: block;
+  margin: 0 auto;
+}
+.workImgs {
+  width: 75%;
+  border-radius: 1%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 7%;
+}
+.citeBox {
+  margin: 3% 5% 3% 1%;
+  background-color: brown;
+  border-radius: 5px;
+  color: lightgrey;
+  font-size: 26px;
+}
+.greyBG {
+  background-color: lightgrey;
+}
+.linkStyle {
+  color: brown;
+}
+
+/*-----Margins-----*/
+.noLeftRightMargins {
+  margin-left: 0;
+  margin-right: 0;
+}
+.softLRMargins {
+  margin-left: -7%;
+  margin-right: -7%;
+}
+.divMainImg {
+  margin: 5% auto 5% auto;
+}
+.workMargin {
+  margin: 3% -2% 3% -2%;
+}
+.cocatechMargin {
+  margin: 10% -7% 10% -7%;
+}
+
+/*-----Parent and Childs-----*/
+.childCenter {
+  margin-top: 10%;
+}
+.boxText {
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+/*-----Larger Screens-----*/
+@media only screen and (min-width:768px){
+  /*-----Vertical Align-----*/
+  .parentCenter {
+    position: relative;
+  }
+  .childCenter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
+  }
+
+  /*-----tags-----*/
+  h1 {
+    font-size: 70px;
+    padding-bottom: 1%;
+  }
+  h3 {
+    font-size: 135%;
+  }
+  
+  /*-----Header-----*/
+  .containerBox {
+    font-size: 20px;
+  }
+  
+  /*-----content-----*/
+  .citeBox {
+    margin: 3% 20% 3% 20%;
+    font-size: 35px;
+  }
+  .centerLS {
+    text-align: center;
+  }
+  .greyBG {
+    height: 90%;
+  }
+  
+  /*-----Margins-----*/
+  .softLRMargins {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .workImgsCoca {
+    width: 100%;
+  }
+  .workMargin {
+    margin: 3% 10% 3% 10%;
+  }
+  .cocatechMargin {
+    margin: 0 3% 0 3%;
+  }
+  .cocatechImgText {
+    margin-top: 1%;
+    margin-bottom: 4%
+  }
+}
