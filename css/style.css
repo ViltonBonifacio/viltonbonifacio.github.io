@@ -1,0 +1,74 @@
+body {
+	font-family: "Sanchez";
+}
+h1 {
+	color: #33637F;
+}
+p, a {
+	font-size: 17px;
+}
+/*-----------------*/
+.imgHeader {
+	width: 100%;
+	padding: 5% 25% 7% 25%;
+	border-radius: 1%;
+}
+.pageHeader {
+	background-color: lightgrey;
+	border-bottom: 1px solid #C5CACC;
+}
+.pageNavbar {
+	margin-bottom: 0;
+	border-bottom: 1px solid #10B0FF;
+	border-radius: 0;
+}
+.img-responsive {
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 10px;
+}
+.boxPadding {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.interMargin{
+	margin-bottom: 15px;
+}
+.socialLink {
+	margin-bottom: 10px;
+}
+.footerSpace {
+	padding-top: 10px;
+}
+.shadowBox {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 1, 0.19);
+}
+.navbar li a {
+	line-height: 50px;
+}
+button.navbar-toggle.collapsed, button.navbar-toggle{
+	margin-top: 17px;
+}
+.footerBG {
+	background-color: #7B7E7F;
+}
+@media only screen and (max-width:355px){
+	/*-----Vertical Align-----*/
+	button.navbar-toggle.collapsed, button.navbar-toggle{
+		margin-top: 40px;
+	}
+}
+@media only screen and (min-width:768px){
+	/*-----Vertical Align-----*/
+	.img-responsive {
+		padding-left: 50px;
+		padding-right: 50px;
+		margin-bottom: 10px;
+	}
+	.interMargin {
+		margin-bottom: 20px;
+	}
+}
