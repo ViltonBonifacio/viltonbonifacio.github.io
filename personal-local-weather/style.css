@@ -1,0 +1,103 @@
+/**
+ * Created by Vilton Bonifácio.
+ * https://viltonbonifacio.github.io
+ */
+/*
+        Tags
+        */
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+h1 {
+    font-family: 'Coiny', cursive !important;
+    color: #09091e !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important;
+}
+/*
+        IDs
+        */
+#containerStyle {
+    background-color: white;
+    border: 1px solid dimgrey;
+    border-radius: 25px;
+}
+#summary {
+    font-size: 20px;
+}
+#temperature {
+    font-size: 36px;
+}
+#windSpeed {
+    font-size: 24px;
+}
+#windSpeed, #temperature {
+    margin-top: 30px !important;
+    margin-bottom: 0 !important;
+}
+#location {
+    font-size: 20px;
+    margin-top: 20px;
+}
+#footer {
+    position: fixed;
+    bottom: 4px;
+    left: 10px;
+}
+#footerText {
+    background-color: white;
+    border-radius: 4px;
+    margin: 0;
+}
+/*
+        Classes
+        */
+.img {
+    display: block;
+    margin: 0 auto;
+    height:64px;
+    width: 161px;
+}
+.containerVerticalAlign {
+    min-height: 100%;
+    min-height: 100vh;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-box-align : center;
+    -webkit-align-items : center;
+    -moz-box-align : center;
+    -ms-flex-align : center;
+    align-items : center;
+
+    width: 100%;
+
+    -webkit-box-pack : center;
+    -moz-box-pack : center;
+    -ms-flex-pack : center;
+    -webkit-justify-content : center;
+    justify-content : center;
+}
+.modalStyle {
+    font-size: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+/*
+        Screen Sizes
+        */
+@media (min-width: 768px) {
+    .verticalAlign {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+    #windSpeed, #temperature {
+        margin-top: 0 !important;
+    }
+}
