@@ -96,6 +96,41 @@ function getWeather(lat, lon) {
 
 //Coordinates and location
 function getAddress() {
+    var lat;
+    var lon;
+    var showError;
+    function getCoordinates(){
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showErrors);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    function showPosition(position) {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+    }
+
+    function showErrors(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case  error.UNKNOWN_ERR:
+                alert("An unknown error occurrred.");
+                break;
+        }
+    }
+    getCoordinates();
+    getWeather(lat,lon);
+
+    /*
     var httpRequestIP;
 
     //The request
@@ -122,6 +157,7 @@ function getAddress() {
             console.log("There was a problem with the request.\nStatus code: " + httpRequestIP.status + '.\nError: 002.');
         }
     }
+    */
 
 }
 
