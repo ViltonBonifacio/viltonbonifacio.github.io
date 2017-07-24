@@ -95,10 +95,9 @@ function getWeather(lat, lon) {
 }
 
 //Coordinates and location
-function getAddress() {
+function getCoordinates() {
     var lat;
     var lon;
-    var showError;
     function getCoordinates(){
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition,showErrors);
@@ -109,6 +108,7 @@ function getAddress() {
     function showPosition(position) {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
+        console.log(position.coords.latitude, position.coords.longitude);
     }
 
     function showErrors(error) {
@@ -127,10 +127,18 @@ function getAddress() {
                 break;
         }
     }
-    getCoordinates();
-    getWeather(lat,lon);
+    //if (lat && lon) {
+        getCoordinates();
+        getWeather(-21.766389, -43.348249);
+    //} else {
+    //    console.log("Error: 05");
+    //}
 
-    /*
+
+}
+/*
+//To get the City, state and Country
+function getAdrres(lat, lon) {
     var httpRequestIP;
 
     //The request
@@ -140,27 +148,22 @@ function getAddress() {
         return false;
     }
     httpRequestIP.onreadystatechange = IPAlerts;
-    httpRequestIP.open('GET', 'https://crossorigin.me/http://ip-api.com/json');
+    httpRequestIP.open('GET', 'https://crossorigin.me/https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + lon);
     httpRequestIP.send();
 
     //Alerts
     function IPAlerts() {
         if (httpRequestIP.readyState === XMLHttpRequest.DONE) {
             if (httpRequestIP.status === 200) {
-                var IPResponse = JSON.parse(httpRequestIP.responseText);
-                document.getElementById("location").innerHTML = IPResponse['city'] + ", " + IPResponse['regionName'] + " - " + IPResponse['countryCode'];
-                var lat = IPResponse['lat'].toString();
-                var lon = IPResponse['lon'].toString();
-                getWeather(lat,lon);
+                var response = JSON.parse(httpRequestIP.responseText);
+                document.getElementById("location").innerHTML = response['city'] + ", " + response['regionName'] + " - " + response['countryCode'];
             }
         } else {
             console.log("There was a problem with the request.\nStatus code: " + httpRequestIP.status + '.\nError: 002.');
         }
     }
-    */
-
 }
-
+*/
 //Change temperature unit
 function changeTempUnit() {
     var temp = document.getElementById("temperature").innerHTML.split(" ");
