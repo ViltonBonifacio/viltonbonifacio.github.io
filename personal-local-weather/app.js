@@ -136,34 +136,6 @@ function getCoordinates() {
 
 
 }
-/*
-//To get the City, state and Country
-function getAdrres(lat, lon) {
-    var httpRequestIP;
-
-    //The request
-    httpRequestIP = new XMLHttpRequest();
-    if (!httpRequestIP) {
-        console.log("Cannot creat an XMLHTTP instance.\nError: 001.");
-        return false;
-    }
-    httpRequestIP.onreadystatechange = IPAlerts;
-    httpRequestIP.open('GET', 'https://crossorigin.me/https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + lon);
-    httpRequestIP.send();
-
-    //Alerts
-    function IPAlerts() {
-        if (httpRequestIP.readyState === XMLHttpRequest.DONE) {
-            if (httpRequestIP.status === 200) {
-                var response = JSON.parse(httpRequestIP.responseText);
-                document.getElementById("location").innerHTML = response['city'] + ", " + response['regionName'] + " - " + response['countryCode'];
-            }
-        } else {
-            console.log("There was a problem with the request.\nStatus code: " + httpRequestIP.status + '.\nError: 002.');
-        }
-    }
-}
-*/
 //Change temperature unit
 function changeTempUnit() {
     var temp = document.getElementById("temperature").innerHTML.split(" ");
