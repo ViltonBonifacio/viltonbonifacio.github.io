@@ -94,6 +94,30 @@ function getWeather(lat, lon) {
     }
 }
 
+function getAddress(lat, lon) {
+    var httpRequestAddress = new XMLHttpRequest();
+
+    if(!httpRequestAddress) {
+        console.log("Cannot creat an XMLHTTP instance.\nError: 005.");
+        return false;
+    }
+
+    httpRequestAddress.onreadystatechange = addressAlerts;
+    httpRequestAddress.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lon + '&key=AIzaSyDm2TIGA1DNt9Yft_b49CiumRgaq-8GYQ8');
+    httpRequestAddress.send();
+
+    function addressAlerts() {
+        if (httpRequestAddress.readyState === XMLHttpRequest.DONE) {
+            if(httpRequestAddress.status === 200) {
+                var addressResponse = JSON.parse(httpRequestAddress.responseText);
+                document.getElementById("location").innerHTML = addressResponse['results'][2]['formatted_address'];
+                console.log(addressResponse);
+            }
+        } else {
+            console.log("There was a problem with the request.\nStatus code: " + httpRequestAddress.status + ".\nError: 006.");
+        }
+    }
+}
 //Coordinates and location
 function getCoordinates() {
     var options = {
@@ -110,6 +134,7 @@ function getCoordinates() {
         console.log(position.coords.latitude, position.coords.longitude);
         if (lat && lon) {
             getWeather(lat, lon);
+            getAddress(lat, lon);
         } else {
             console.log("Error: 05");
         }
