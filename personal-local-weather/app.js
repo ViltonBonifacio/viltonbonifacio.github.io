@@ -96,19 +96,23 @@ function getWeather(lat, lon) {
 
 //Coordinates and location
 function getCoordinates() {
-    var lat;
-    var lon;
-    function getCoordinates(){
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition,showErrors);
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
-    }
+    var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
     function showPosition(position) {
+        var lat;
+        var lon;
         lat = position.coords.latitude;
         lon = position.coords.longitude;
         console.log(position.coords.latitude, position.coords.longitude);
+        if (lat && lon) {
+            getWeather(lat, lon);
+        } else {
+            console.log("Error: 05");
+        }
     }
 
     function showErrors(error) {
@@ -127,15 +131,16 @@ function getCoordinates() {
                 break;
         }
     }
-    //if (lat && lon) {
-        getCoordinates();
-        getWeather(-21.766389, -43.348249);
-    //} else {
-    //    console.log("Error: 05");
-    //}
-
-
+    function getCoordinates(){
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showErrors, options);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+    getCoordinates();
 }
+
 //Change temperature unit
 function changeTempUnit() {
     var temp = document.getElementById("temperature").innerHTML.split(" ");
