@@ -111,7 +111,6 @@ function getAddress(lat, lon) {
             if(httpRequestAddress.status === 200) {
                 var addressResponse = JSON.parse(httpRequestAddress.responseText);
                 document.getElementById("location").innerHTML = addressResponse['results'][2]['formatted_address'];
-                console.log(addressResponse);
             }
         } else {
             console.log("There was a problem with the request.\nStatus code: " + httpRequestAddress.status + ".\nError: 006.");
