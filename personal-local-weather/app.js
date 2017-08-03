@@ -130,7 +130,6 @@ function getCoordinates() {
         var lon;
         lat = position.coords.latitude;
         lon = position.coords.longitude;
-        console.log(position.coords.latitude, position.coords.longitude);
         if (lat && lon) {
             getWeather(lat, lon);
             getAddress(lat, lon);
