@@ -62,19 +62,15 @@ function backgroundGenerator(icon) {
 //Weather forecast.
 function getWeather(lat, lon) {
     var httpRequestWeather;
-
     //The request
     httpRequestWeather = new XMLHttpRequest();
     if (!httpRequestWeather) {
         console.log("Cannot creat an XMLHTTP instance.\nError: 003.");
         return false;
     }
-
+    var c = "1cc5afb88c5a65fed0625c8f28671c52/";
     httpRequestWeather.onreadystatechange = weatherAlerts;
-    httpRequestWeather.open('GET', 'https://crossorigin.me/https://api.darksky.net/forecast/b1cdd0cd5d6306f2f8fdbedbb543a699/' +
-        lat +
-        ',' +
-        lon +
+    httpRequestWeather.open('GET', 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + c + lat + ',' + lon +
         '?exclude=minutely,hourly,daily,alerts');
     httpRequestWeather.send();
 
