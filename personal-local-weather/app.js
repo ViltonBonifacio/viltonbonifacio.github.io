@@ -18,7 +18,9 @@ function makeIcon(icon) {
 function backgroundGenerator(icon) {
     var width = document.body.clientWidth,
         height = window.innerHeight,
-        htmlHeight = document.getElementById("height").scrollHeight;
+        body = document.body,
+        html = document.documentElement,
+        htmlHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
     var bodyStyle = document.body.style;
 
     if (height >= htmlHeight) {
@@ -78,11 +80,11 @@ function getWeather(lat, lon) {
         if (httpRequestWeather.readyState === XMLHttpRequest.DONE) {
             if (httpRequestWeather.status === 200) {
                 var weatherResponse = JSON.parse(httpRequestWeather.responseText);
-                backgroundGenerator(weatherResponse['currently']['icon']);
                 document.getElementById("temperature").innerHTML = weatherResponse['currently']['temperature'] + ' &#8457;'; //Celsius &#8451;
                 document.getElementById("summary").innerHTML = weatherResponse['currently']['summary'];
                 document.getElementById("windSpeed").innerHTML = weatherResponse['currently']['windSpeed'] + " mph";
                 makeIcon(weatherResponse['currently']['icon']);
+                backgroundGenerator(weatherResponse['currently']['icon']);
             } else {
                 console.log("There was a problem with the request.\nStatus code: " + httpRequestWeather.status + ".\nError: 004.");
             }

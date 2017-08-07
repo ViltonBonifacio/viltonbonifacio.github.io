@@ -32,10 +32,10 @@ mark {
     font-size: 36px;
 }
 #windSpeed {
+    margin-top: 30px !important;
     font-size: 24px;
 }
-#windSpeed, #temperature {
-    margin-top: 30px !important;
+#windSpeed, #temperature, #summary {
     margin-bottom: 0 !important;
 }
 #location {
