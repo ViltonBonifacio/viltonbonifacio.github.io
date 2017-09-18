@@ -55,7 +55,7 @@ mark {
 .img {
     display: block;
     margin: 0 auto;
-    height:64px;
+    height: 64px;
     width: 161px;
 }
 
@@ -91,7 +91,7 @@ mark {
 /*
         Screen Sizes
         */
-@media (max-width: 990px) {
+@media (max-width: 1050px) {
     .rowMargin {
         margin-left: 20px !important;
         margin-right: 20px !important;

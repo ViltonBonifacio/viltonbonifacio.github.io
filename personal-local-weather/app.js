@@ -28,35 +28,44 @@ function backgroundGenerator(icon) {
             if (width <= 640) {
                 bodyStyle.backgroundImage = "url('background images/" + icon + "_640.jpg')";
                 bodyStyle.backgroundSize = width + "px";
+                bodyStyle.backgroundRepeat = "no-repeat";
             } else if (width > 640 && width < 1280) {
                 bodyStyle.backgroundImage = "url('background images/" + icon + "_1280.jpg')";
                 bodyStyle.backgroundSize = width + "px";
+                bodyStyle.backgroundRepeat = "no-repeat";
             } else {
                 bodyStyle.backgroundImage = "url('background images/" + icon + "_1920.jpg')";
                 bodyStyle.backgroundSize = width + "px";
+                bodyStyle.backgroundRepeat = "no-repeat";
             }
         } else {
             if (height <= 370) {
                 bodyStyle.backgroundImage = "url('background images/" + icon + "_640.jpg')";
                 bodyStyle.backgroundSize = "auto " + height + "px";
+                bodyStyle.backgroundRepeat = "no-repeat";
             } else if (height > 370 && height < 1111) {
                 bodyStyle.backgroundImage = "url('background images/" + icon + "_1280.jpg')";
                 bodyStyle.backgroundSize = "auto " + height + "px";
+                bodyStyle.backgroundRepeat = "no-repeat";
             } else {
                 bodyStyle.backgroundImage = "url('background images/" + icon + "_1920.jpg')";
                 bodyStyle.backgroundSize = "auto " + height + "px";
+                bodyStyle.backgroundRepeat = "no-repeat";
             }
         }
     } else {
         if (htmlHeight <= 370) {
             bodyStyle.backgroundImage = "url('background images/" + icon + "_640.jpg')";
             bodyStyle.backgroundSize = "auto " + htmlHeight + "px";
+            bodyStyle.backgroundRepeat = "no-repeat";
         } else if (htmlHeight > 370 && htmlHeight < 1111) {
             bodyStyle.backgroundImage = "url('background images/" + icon + "_1280.jpg')";
             bodyStyle.backgroundSize = "auto " + htmlHeight + "px";
+            bodyStyle.backgroundRepeat = "no-repeat";
         } else {
             bodyStyle.backgroundImage = "url('background images/" + icon + "_1920.jpg')";
             bodyStyle.backgroundSize = "auto " + htmlHeight + "px";
+            bodyStyle.backgroundRepeat = "no-repeat";
         }
     }
 }
@@ -165,24 +174,15 @@ function getCoordinates() {
 //Change temperature unit
 function changeTempUnit() {
     var temp = document.getElementById("temperature").innerHTML.split(" ");
-    var temperature = document.getElementById("temperature").innerHTML;
+    var wind = document.getElementById("windSpeed").innerHTML.split(" ");
+
     if (temp[1] === "℉") {
         document.getElementById("temperature").innerHTML = ((temp[0] - 32) * 5 / 9).toFixed(2) + ' &#8451;';
-        document.getElementById("changeUnit").innerHTML = "&#8457;";
+        document.getElementById("changeUnit").innerHTML = "Imperial system";
+        document.getElementById("windSpeed").innerHTML = (wind[0] * 1.609344).toFixed(2) + ' Km/h';
     } else {
         document.getElementById("temperature").innerHTML = (temp[0] * 9 / 5 + 32).toFixed(2) + ' &#8457;';
-        document.getElementById("changeUnit").innerHTML = "&#8451;";
-    }
-}
-
-//Change Wind Speed Unit
-function changeWSUnit() {
-    var temp = document.getElementById("windSpeed").innerHTML.split(" ");
-    if (temp[1] === "mph") {
-        document.getElementById("windSpeed").innerHTML = (temp[0] * 1.609344).toFixed(2) + ' Km/h';
-        document.getElementById("changeWS").innerHTML = "mph";
-    } else {
-        document.getElementById("windSpeed").innerHTML = (temp[0] / 1.609344).toFixed(2) + ' mph';
-        document.getElementById("changeWS").innerHTML = "Km/h";
+        document.getElementById("changeUnit").innerHTML = "Metric system";
+        document.getElementById("windSpeed").innerHTML = (wind[0] / 1.609344).toFixed(2) + ' mph';
     }
 }
