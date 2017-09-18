@@ -1,0 +1,87 @@
+/*   Tags   */
+body {
+  background-color: lightgrey;
+  background: url("img_flwr.gif");
+  background-position: center top;
+  background-height: 100% auto;
+}
+
+/*   IDs   */
+#title {
+  font-family: 'Bungee Inline', cursive;
+}
+#quote {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+}
+#who {
+  font-family: 'Satisfy', cursive;
+  font-size: 20px;
+}
+#button {
+  font-family: 'Cinzel', serif;
+  height: 30px;
+}
+#footer {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  margin-right: 0;
+  margin-top: 25px;
+  position: fixed;
+  bottom: 0;
+}
+
+/*   Classes   */
+.linkFooter {
+  color: white;
+}
+.linkFooter:hover {
+    color: grey;
+}
+.linkFooter:visited {
+    color: lightgrey;
+}
+.linkInfo {
+  color: grey;
+}
+.linkInfo:hover {
+    color: darkgrey;
+  }
+.linkInfo:visited {
+    color: lightgrey;
+}
+.box {
+  background-color: white;
+  border-radius: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 50px;
+  border: 1px solid grey;
+}
+.modalStyle {
+  font-size: 20;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.titleMargin {
+  margin-top: 0;
+}
+.footerText {
+  background-color: black;
+  border-radius: 4px;
+}
+/*-----Larger Screens-----*/
+/*   Small devices   */
+@media only screen and (min-width:768px){
+  .box {
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 150px;
+  }
+}
+/*   Medium devices   */
+@media only screen and (min-width:992px){
+  .box {
+    margin-top: 300px;
+  }
+}
