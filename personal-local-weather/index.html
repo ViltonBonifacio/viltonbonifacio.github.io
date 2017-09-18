@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Personal Local Weather</title>
     <meta name="description" content="
-        Personal Local Weather is a Web application that provides information on weather forecasts. This information varies depending on the location of the user. The features of the application are:
+        A Web application that provides information on weather forecasts. This information varies depending on the location of the user. The features of the application are:
             An icon followed by a summary;
             Current temperature in Fahrenheit followed by a button that changes the temperature unit to Celsius;
             The wind speed in miles per hour followed by a button that changes the speed unit to kilometers per hour;
@@ -27,8 +27,9 @@
     <link href="https://fonts.googleapis.com/css?family=Coiny|Quicksand" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
-<body onload="getAddress();" class="containerVerticalAlign">
-    <div id="containerStyle" class="container">
+<body onload="getCoordinates();" class="containerVerticalAlign">
+<div class="row rowMargin">
+    <div id="containerStyle" class="container col-xs-12 col-sm-12 col-md-12">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <!-- Modal button -->
@@ -48,18 +49,19 @@
                                 <p><strong>Personal Local Weather</strong> is a Web application that provides information on weather forecasts. This information varies depending on the location of the user. The features of the application are:</p>
                                 <ul>
                                     <li>An <strong>icon</strong> followed by a <strong>summary</strong>;</li>
-                                    <li>Current <strong>temperature</strong> in Fahrenheit followed by a button that changes the temperature unit to Celsius;</li>
-                                    <li>The <strong>wind speed</strong> in miles per hour followed by a button that changes the speed unit to kilometers per hour;</li>
+                                    <li>Current <strong>temperature</strong> in Fahrenheit followed by a button that changes the temperature unit;</li>
+                                    <li>The <strong>wind speed</strong> in miles per hour followed by a button that changes the speed unit;</li>
                                     <li>The user's current <strong>city</strong>, <strong>state</strong> (or equivalent), and <strong>country</strong>; and</li>
-                                    <li>The <strong>background image</strong> that changes according to the weather.</li>
+                                    <li>A <strong>background image</strong> that changes according to the weather.</li>
                                 </ul>
                                 <p>This application wouldn't be made without the help of: </p>
                                 <ul>
                                     <li><a href="https://www.freecodecamp.org/" target="_blank">free Code Camp</a>;</li>
                                     <li><a href="https://developer.mozilla.org/" target="_blank" >Mozilla Developer Network</a>;</li>
                                     <li><a href="https://darksky.net/poweredby/" target="_blank">Dark Sky</a>;</li>
-                                    <li><a href="https://ip-api.com" target="_blank">IP-API</a>;</li>
+                                    <li><a href="https://developers.google.com/maps/" target="_blank">Google Maps APIs</a>;</li>
                                     <li><a href="https://crossorigin.me" target="_blank" >crossorigin.me</a>;</li>
+                                    <li><a href="https://cors-anywhere.herokuapp.com/" target="_blank" >CORS Anywhere</a>;</li>
                                     <li><a href="https://fonts.googleapis.com" target="_blank">Google Fonts</a>;</li>
                                     <li><a href="http://fontawesome.io/" target="_blank">Font Awsome</a>; and</li>
                                     <li><a href="http://getbootstrap.com/" target="_blank" >Bootstrap</a>.</li>
@@ -69,13 +71,13 @@
                                 <table class="table table-striped text-center">
                                     <thead>
                                         <tr>
-                                            <th class="text-center" colspan="4">Background Images and the Authors</th>
+                                            <th class="text-center active" colspan="4">Background Images and the Authors</th>
                                         </tr>
                                         <tr>
-                                            <th class="text-center">Image</th>
-                                            <th class="text-center">Author</th>
-                                            <th class="text-center">Image</th>
-                                            <th class="text-center">Author</th>
+                                            <th class="text-center active">Image</th>
+                                            <th class="text-center active">Author</th>
+                                            <th class="text-center active">Image</th>
+                                            <th class="text-center active">Author</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -144,10 +146,11 @@
             </div>
         </div>
     </div>
-    <footer id="footer">
-        <p id="footerText">
+    <div id="footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p id="footerText"><mark>
             Coded by: <a href="https://viltonbonifacio.github.io/" target="_blank">Vilton Bonifácio</a>
-        </p>
-    </footer>
+        </mark></p>
+    </div>
+</div>
 </body>
 </html>

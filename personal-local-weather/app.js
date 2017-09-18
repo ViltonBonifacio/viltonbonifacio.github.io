@@ -18,7 +18,9 @@ function makeIcon(icon) {
 function backgroundGenerator(icon) {
     var width = document.body.clientWidth,
         height = window.innerHeight,
-        htmlHeight = document.getElementById("height").scrollHeight;
+        body = document.body,
+        html = document.documentElement,
+        htmlHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
     var bodyStyle = document.body.style;
 
     if (height >= htmlHeight) {
@@ -62,19 +64,15 @@ function backgroundGenerator(icon) {
 //Weather forecast.
 function getWeather(lat, lon) {
     var httpRequestWeather;
-
     //The request
     httpRequestWeather = new XMLHttpRequest();
     if (!httpRequestWeather) {
         console.log("Cannot creat an XMLHTTP instance.\nError: 003.");
         return false;
     }
-
+    var c = "1cc5afb88c5a65fed0625c8f28671c52/";
     httpRequestWeather.onreadystatechange = weatherAlerts;
-    httpRequestWeather.open('GET', 'https://crossorigin.me/https://api.darksky.net/forecast/b1cdd0cd5d6306f2f8fdbedbb543a699/' +
-        lat +
-        ',' +
-        lon +
+    httpRequestWeather.open('GET', 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + c + lat + ',' + lon +
         '?exclude=minutely,hourly,daily,alerts');
     httpRequestWeather.send();
 
@@ -82,11 +80,11 @@ function getWeather(lat, lon) {
         if (httpRequestWeather.readyState === XMLHttpRequest.DONE) {
             if (httpRequestWeather.status === 200) {
                 var weatherResponse = JSON.parse(httpRequestWeather.responseText);
-                backgroundGenerator(weatherResponse['currently']['icon']);
                 document.getElementById("temperature").innerHTML = weatherResponse['currently']['temperature'] + ' &#8457;'; //Celsius &#8451;
                 document.getElementById("summary").innerHTML = weatherResponse['currently']['summary'];
                 document.getElementById("windSpeed").innerHTML = weatherResponse['currently']['windSpeed'] + " mph";
                 makeIcon(weatherResponse['currently']['icon']);
+                backgroundGenerator(weatherResponse['currently']['icon']);
             } else {
                 console.log("There was a problem with the request.\nStatus code: " + httpRequestWeather.status + ".\nError: 004.");
             }
@@ -94,21 +92,48 @@ function getWeather(lat, lon) {
     }
 }
 
-//Coordinates and location
-function getAddress() {
-    var lat;
-    var lon;
-    var showError;
-    function getCoordinates(){
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition,showErrors);
+function getAddress(lat, lon) {
+    var httpRequestAddress = new XMLHttpRequest();
+
+    if(!httpRequestAddress) {
+        console.log("Cannot creat an XMLHTTP instance.\nError: 005.");
+        return false;
+    }
+
+    httpRequestAddress.onreadystatechange = addressAlerts;
+    httpRequestAddress.open('GET', 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lon + '&key=AIzaSyDm2TIGA1DNt9Yft_b49CiumRgaq-8GYQ8');
+    httpRequestAddress.send();
+
+    function addressAlerts() {
+        if (httpRequestAddress.readyState === XMLHttpRequest.DONE) {
+            if(httpRequestAddress.status === 200) {
+                var addressResponse = JSON.parse(httpRequestAddress.responseText);
+                document.getElementById("location").innerHTML = addressResponse['results'][2]['formatted_address'];
+            }
         } else {
-            alert("Geolocation is not supported by this browser.");
+            console.log("There was a problem with the request.\nStatus code: " + httpRequestAddress.status + ".\nError: 006.");
         }
     }
+}
+//Coordinates and location
+function getCoordinates() {
+    var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
     function showPosition(position) {
+        var lat;
+        var lon;
         lat = position.coords.latitude;
         lon = position.coords.longitude;
+        if (lat && lon) {
+            getWeather(lat, lon);
+            getAddress(lat, lon);
+        } else {
+            console.log("Error: 05");
+        }
     }
 
     function showErrors(error) {
@@ -127,38 +152,14 @@ function getAddress() {
                 break;
         }
     }
-    getCoordinates();
-    getWeather(lat,lon);
-
-    /*
-    var httpRequestIP;
-
-    //The request
-    httpRequestIP = new XMLHttpRequest();
-    if (!httpRequestIP) {
-        console.log("Cannot creat an XMLHTTP instance.\nError: 001.");
-        return false;
-    }
-    httpRequestIP.onreadystatechange = IPAlerts;
-    httpRequestIP.open('GET', 'https://crossorigin.me/http://ip-api.com/json');
-    httpRequestIP.send();
-
-    //Alerts
-    function IPAlerts() {
-        if (httpRequestIP.readyState === XMLHttpRequest.DONE) {
-            if (httpRequestIP.status === 200) {
-                var IPResponse = JSON.parse(httpRequestIP.responseText);
-                document.getElementById("location").innerHTML = IPResponse['city'] + ", " + IPResponse['regionName'] + " - " + IPResponse['countryCode'];
-                var lat = IPResponse['lat'].toString();
-                var lon = IPResponse['lon'].toString();
-                getWeather(lat,lon);
-            }
+    function getCoordinates(){
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition,showErrors, options);
         } else {
-            console.log("There was a problem with the request.\nStatus code: " + httpRequestIP.status + '.\nError: 002.');
+            alert("Geolocation is not supported by this browser.");
         }
     }
-    */
-
+    getCoordinates();
 }
 
 //Change temperature unit
